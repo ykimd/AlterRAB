@@ -28,11 +28,12 @@
         }
 
         body {
-            font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #1f1b24 0, var(--color-bg) 45%, #050509 100%);
-            color: var(--color-text);
-            line-height: 1.6;
-        }
+    font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    /* 🔁 그라데이션 대신 단색 */
+    background: var(--color-bg);   /* 또는 원하는 색 코드 (#FFF9F5 같은 거) */
+    color: var(--color-text);
+    line-height: 1.6;
+}
 
         a {
             color: inherit;
@@ -182,11 +183,14 @@
             margin-bottom: 1rem;
         }
 
-        .hero-title span.highlight {
-            background: linear-gradient(135deg, var(--color-main-light), #f7c2d0);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+       .hero-side {
+    /* 🔁 그라데이션 대신 단색 박스 */
+    background: var(--color-card);    /* 카드용 배경색(보통 흰색 계열) */
+    border-radius: 1.5rem;
+    padding: 1.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);  /* 밝은 테마면 테두리도 살짝 어둡게 */
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
 
         .hero-subtitle {
             font-size: 1rem;
@@ -443,7 +447,7 @@
             <nav class="nav">
                 <div class="logo">
                     <!-- 🔤 여기 회사 이름/브랜드명 바꾸기 -->
-                    <span>BRANDING</span> STUDIO
+                    <span>ALTER LAB STUDIO</span>
                 </div>
                 <div class="nav-links">
                     <a href="#about" class="scroll-link">회사소개</a>
@@ -462,10 +466,10 @@
         <div class="container">
             <div class="hero-inner">
                 <div>
-                    <div class="pill">Alter RAB PERSONAL BRANDING</div>
+                    <div class="pill">Alter LAB PERSONAL BRANDING</div>
                     <h1 class="hero-title">
                         당신의 브랜드를 위한
-                        <span class="highlight">Alter RAB</span> Studio
+                        <span class="highlight">Alter LAB</span> Studio
                     </h1>
                     <p class="hero-subtitle">
                         색채 진단, 이미지 컨설팅, 온라인 브랜딩 전략까지.<br />
@@ -684,7 +688,7 @@
                         <div class="contact-row">
                             <div class="contact-label">EMAIL</div>
                             <!-- ✏️ 실제 이메일로 변경 -->
-                            <div class="contact-value">alterrabstudio@yourstudio.com</div>
+                            <div class="contact-value">alterLABstudio@yourstudio.com</div>
                         </div>
                         <div class="contact-row">
                             <div class="contact-label">KAKAO</div>
@@ -694,7 +698,7 @@
                         <div class="contact-row">
                             <div class="contact-label">INSTAGRAM</div>
                             <!-- ✏️ 실제 인스타 계정 링크로 변경 -->
-                            <div class="contact-value">@alterrab_studio</div>
+                            <div class="contact-value">@alterLAB_studio</div>
                         </div>
                         <p class="contact-note">
                             문의 시, <strong>이름 / 나이 / 현재 하시는 일 / 원하는 이미지</strong>를
