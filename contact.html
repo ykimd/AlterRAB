@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>문의하기 - 브랜딩 스튜디오</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --bg: #FFF9F2;
+    --burgundy: #7B1B36;
+    --burgundy-light: #A84A63;
+    --text: #333;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Pretendard', sans-serif;
+    color: var(--text);
+}
+
+/* 상단바 */
+header { background: var(--burgundy); padding: 15px 0; }
+nav { width: 90%; margin:auto; display:flex; justify-content:space-between; }
+nav .logo { color:white; font-weight:700; }
+nav a { color:#f3d7dd; margin-left:20px; text-decoration:none; }
+nav a:hover { color:white; }
+
+/* 페이지 */
+.page {
+    width: 90%;
+    margin: 40px auto;
+}
+
+h1 { color: var(--burgundy); }
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+}
+
+.info-title {
+    color: var(--burgundy);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">BRANDING STUDIO</div>
+        <div>
+            <a href="index.html">홈</a>
+            <a href="about.html">회사소개</a>
+            <a href="services.html">서비스</a>
+            <a href="contact.html">문의</a>
+        </div>
+    </nav>
+</header>
+
+<div class="page">
+    <h1>문의 안내</h1>
+
+    <div class="card">
+        <p>상담은 예약제로 운영됩니다. 아래 연락처로 편하게 문의 주세요.</p>
+
+        <div style="margin-bottom:15px;">
+            <div class="info-title">EMAIL</div>
+            <div>hello@yourstudio.com</div>
+        </div>
+
+        <div style="margin-bottom:15px;">
+            <div class="info-title">카카오톡</div>
+            <div>@yourstudio</div>
+        </div>
+
+        <div style="margin-bottom:15px;">
+            <div class="info-title">Instagram</div>
+            <div>@yourstudio_branding</div>
+        </div>
+
+        <hr>
+
+        <p><b>문의 시 함께 알려주시면 좋아요:</b></p>
+        <ul>
+            <li>이름 / 나이</li>
+            <li>현재 하시는 일</li>
+            <li>원하는 이미지 방향</li>
+            <li>촬영 또는 브랜딩이 필요한 이유</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
