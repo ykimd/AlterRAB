@@ -1,2 +1,2 @@
-# AlterRAB
+# AlterLAB
 Personal branding company website
