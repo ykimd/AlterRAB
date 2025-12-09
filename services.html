@@ -84,14 +84,14 @@ nav a:hover { color:white; }
     gap: 30px;
 }
 
-/* 각 프로그램 / 절차 하나씩 */
+/* 각 프로그램 하나씩 */
 .box-item {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* 위쪽 이미지 박스 (파란 사각형 자리) */
+/* 위쪽 이미지 박스 (사진 자리) */
 .image-box {
     width: 170px;
     height: 170px;
@@ -122,7 +122,44 @@ nav a:hover { color:white; }
     margin-bottom: 4px;
 }
 
-/* ================= 성공 사례 카드(기존 스타일 유지) ================= */
+/* ================= 진행 절차 아이콘 스타일 ================= */
+.process-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.step-item {
+    width: 180px;
+    text-align: center;
+}
+
+.step-icon {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+}
+
+.step-title {
+    font-weight: 700;
+    color: var(--burgundy);
+    margin-bottom: 6px;
+}
+
+.step-desc {
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.arrow-icon {
+    width: 60px;
+    opacity: 0.9;
+}
+
+/* ================= 성공 사례 카드 ================= */
 .card {
     background: white;
     padding: 25px;
@@ -153,6 +190,13 @@ nav a:hover { color:white; }
     .text-box {
         width: 90vw;
         max-width: 260px;
+    }
+    .process-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .arrow-icon {
+        transform: rotate(90deg);
     }
 }
 </style>
@@ -224,78 +268,78 @@ nav a:hover { color:white; }
     </div>
 </section>
 
-
-<!-- ================= 진행 절차 (카드 + 연분홍 화살표) ================= -->
+<!-- ================= 진행 절차 (아이콘 + 연분홍 화살표) ================= -->
 <section id="process" class="section-block">
     <h2>진행 절차</h2>
     <p class="section-desc">문의부터 촬영 이후 온라인 적용까지의 전체 흐름입니다.</p>
 
-    <div class="process-rows">
-        <!-- 1줄: 1~3단계 -->
-        <div class="process-row">
-            <div class="box-item">
-                <div class="image-box">
-                    <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 1">
-                </div>
-                <div class="text-box">
-                    <strong>01. 문의 & 일정 조율</strong>
-                    개인 신청, 문의 후<br>기본 일정과 방향 조율을 위한 컨셉 미팅을 진행합니다.
-                </div>
-            </div>
+    <div class="process-wrapper">
 
-            <div class="arrow">➜</div>
-
-            <div class="box-item">
-                <div class="image-box">
-                    <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 2">
-                </div>
-                <div class="text-box">
-                    <strong>02. 사전 설문 & 브리핑</strong>
-                    목표와 상황을 파악하고<br>세부 방향 설정합니다. 스케치 형식의 간단한 촬영 연습도 가능합니다.
-                </div>
-            </div>
-
-            <div class="arrow">➜</div>
-
-            <div class="box-item">
-                <div class="image-box">
-                    <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 3">
-                </div>
-                <div class="text-box">
-                    <strong>03. 이미지 진단 세션</strong>
-                    현장에서 어울리는 색과 이미지에 맞춰 스타일링 진행<br>촬영을 위한 전체적인 준비를 진행합니다.
-                </div>
+        <!-- STEP 1 -->
+        <div class="step-item">
+            <img class="step-icon" src="https://img.icons8.com/ios-filled/100/7B1B36/calendar.png" alt="문의 아이콘">
+            <div class="step-title">01. 문의 & 일정 조율</div>
+            <div class="step-desc">
+                개인 신청, 문의 후<br>
+                기본 일정과 방향 조율을 위한<br>
+                컨셉 미팅을 진행합니다.
             </div>
         </div>
 
-        <!-- 2줄: 4~5단계 -->
-        <div class="process-row">
-            <div class="box-item">
-                <div class="image-box">
-                    <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 4">
-                </div>
-                <div class="text-box">
-                    <strong>04. 촬영용 콘셉트 가이드</strong>
-                    의상·포즈·컷 리스트 포함<br>브랜딩 촬영 가이드를 제공합니다.
-                </div>
-            </div>
+        <img class="arrow-icon" src="https://img.icons8.com/?size=100&id=59823&format=png&color=E79BAF" alt="arrow">
 
-            <div class="arrow">➜</div>
-
-            <div class="box-item">
-                <div class="image-box">
-                    <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 5">
-                </div>
-                <div class="text-box">
-                    <strong>05. 온라인 적용 & 피드백</strong>
-                    촬영 후 실제 적용 및<br>최대 6회 피드백 진행
-                </div>
+        <!-- STEP 2 -->
+        <div class="step-item">
+            <img class="step-icon" src="https://img.icons8.com/ios-filled/100/7B1B36/speech-bubble.png" alt="설문 아이콘">
+            <div class="step-title">02. 사전 설문 & 브리핑</div>
+            <div class="step-desc">
+                목표와 상황을 파악하고<br>
+                세부 방향 설정합니다.<br>
+                스케치 형식의 간단한 촬영 연습도 가능합니다.
             </div>
         </div>
+
+        <img class="arrow-icon" src="https://img.icons8.com/?size=100&id=59823&format=png&color=E79BAF" alt="arrow">
+
+        <!-- STEP 3 -->
+        <div class="step-item">
+            <img class="step-icon" src="https://img.icons8.com/ios-filled/100/7B1B36/checklist.png" alt="체크리스트 아이콘">
+            <div class="step-title">03. 이미지 진단 세션</div>
+            <div class="step-desc">
+                현장에서 어울리는 색과 이미지에 맞춰<br>
+                스타일링 진행 후<br>
+                촬영을 위한 전체적인 준비를 진행합니다.
+            </div>
+        </div>
+
+        <img class="arrow-icon" src="https://img.icons8.com/?size=100&id=59823&format=png&color=E79BAF" alt="arrow">
+
+        <!-- STEP 4 -->
+        <div class="step-item">
+            <img class="step-icon" src="https://img.icons8.com/ios-filled/100/7B1B36/camera.png" alt="카메라 아이콘">
+            <div class="step-title">04. 촬영용 콘셉트 가이드</div>
+            <div class="step-desc">
+                의상·포즈·컷 리스트 포함<br>
+                브랜딩 촬영 가이드를 제공합니다.
+            </div>
+        </div>
+
+        <img class="arrow-icon" src="https://img.icons8.com/?size=100&id=59823&format=png&color=E79BAF" alt="arrow">
+
+        <!-- STEP 5 -->
+        <div class="step-item">
+            <img class="step-icon" src="https://img.icons8.com/ios-filled/100/7B1B36/happy.png" alt="피드백 아이콘">
+            <div class="step-title">05. 온라인 적용 & 피드백</div>
+            <div class="step-desc">
+                촬영 후 실제 적용 및<br>
+                최대 6회 피드백 진행
+            </div>
+        </div>
+
     </div>
 </section>
 
-<!-- ================= 성공 사례 (기존 형식 유지) ================= -->
+<!-- ================= 성공 사례 ================= -->
 <div id="cases" class="card">
     <h2>성공 사례</h2>
 
