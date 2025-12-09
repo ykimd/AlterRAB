@@ -57,40 +57,38 @@ nav a:hover { color: white; }
     color: #555;
 }
 
-/* ===== 세 개의 원 영역 ===== */
+/* ===== 세 개의 원 영역 (삼각형 배치) ===== */
 .circle-section {
-    width: 100%;
+    width: 90%;
     max-width: 900px;
-    margin: 40px auto 60px;
+    margin: 40px auto 80px;
 }
 
-/* 2행 3열 그리드: 가운데 위, 아래 왼쪽/오른쪽 */
-.circle-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    row-gap: 50px;
-    justify-items: center;
-}
-
-/* 위쪽 가운데 원 위치 조정 */
-.circle-grid .circle-wrapper.top {
-    grid-column: 2 / 3;  /* 가운데 컬럼 */
-}
-
-/* 아래쪽 두 개는 기본(왼/오른쪽) */
-
-.circle-wrapper {
+/* 위쪽 한 줄, 아래쪽 한 줄로 나눔 */
+.circle-row {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+/* BRANDING (위 가운데) */
+.circle-row.top {
+    margin-bottom: 50px;
+}
+
+/* GUIDE / CUSTOMIZE (아래 양쪽 끝) */
+.circle-row.bottom {
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* 실제 원 스타일 */
 .circle {
-    width: 180px;
-    height: 180px;
+    width: 190px;
+    height: 190px;
     border-radius: 50%;
-    background: linear-gradient(to bottom, #E64058, #C61B3A); /* 레드~버건디 계열 */
+    background: linear-gradient(to bottom, #E64058, #C61B3A);
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -98,14 +96,14 @@ nav a:hover { color: white; }
     text-align: center;
     padding: 20px;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.18);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .circle:hover,
 .circle.active {
     transform: translateY(-4px);
-    box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.22);
 }
 
 /* 텍스트 구성 */
@@ -132,15 +130,11 @@ nav a:hover { color: white; }
     display: block;
 }
 
-/* 모바일 대응(화면 좁을 때 세로 배치) */
+/* 모바일 대응(세로 배치) */
 @media (max-width: 768px) {
-    .circle-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
-    }
-    .circle-grid .circle-wrapper.top {
-        grid-column: 1 / 2;
+    .circle-row.bottom {
+        flex-direction: column;
+        gap: 30px;
     }
 }
 </style>
@@ -165,34 +159,29 @@ nav a:hover { color: white; }
 </div>
 
 <section class="circle-section">
-    <div class="circle-grid">
-        <!-- 위쪽 BRANDING -->
-        <div class="circle-wrapper top">
-            <div class="circle">
-                <div class="circle-inner">
-                    <h3>BRANDING</h3>
-                    <p>외모보다 중요한 건<br>내가 어떻게 기억되고 싶은가 입니다.</p>
-                </div>
+    <!-- 위쪽 BRANDING -->
+    <div class="circle-row top">
+        <div class="circle">
+            <div class="circle-inner">
+                <h3>BRANDING</h3>
+                <p>외모보다 중요한 건<br>내가 어떻게 기억되고 싶은가 입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 아래쪽 GUIDE / CUSTOMIZE -->
+    <div class="circle-row bottom">
+        <div class="circle">
+            <div class="circle-inner">
+                <h3>GUIDE</h3>
+                <p>촬영 하루로 끝나지 않도록<br>일상에서 적용 가능한 가이드를 제안합니다.</p>
             </div>
         </div>
 
-        <!-- 아래 왼쪽 GUIDE -->
-        <div class="circle-wrapper">
-            <div class="circle">
-                <div class="circle-inner">
-                    <h3>GUIDE</h3>
-                    <p>촬영 하루로 끝나지 않도록<br>일상에서 적용 가능한 가이드를 제안합니다.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 아래 오른쪽 CUSTOMIZE -->
-        <div class="circle-wrapper">
-            <div class="circle">
-                <div class="circle-inner">
-                    <h3>CUSTOMIZE</h3>
-                    <p>직무·목표·성향에 맞춘<br>완전히 개인화된 브랜딩 방향을 설계합니다.</p>
-                </div>
+        <div class="circle">
+            <div class="circle-inner">
+                <h3>CUSTOMIZE</h3>
+                <p>직무·목표·성향에 맞춘<br>완전히 개인화된 브랜딩 방향을 설계합니다.</p>
             </div>
         </div>
     </div>
