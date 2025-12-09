@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>회사소개 - 브랜딩 스튜디오</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --bg: #FFF9F2;
+    --burgundy: #7B1B36;
+    --text: #333;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Pretendard', sans-serif;
+    color: var(--text);
+}
+
+/* 상단바 동일하게 */
+header { background: var(--burgundy); padding: 15px 0; }
+nav { width: 90%; margin: auto; display: flex; justify-content: space-between; }
+nav a { color: #f3d7dd; text-decoration: none; margin-left: 20px; }
+.logo { color:white; font-weight:700; }
+
+/* 내용 영역 */
+section { width: 85%; margin: 40px auto; line-height: 1.7; }
+h1 { color: var(--burgundy); }
+.card { background:white; padding:20px; margin:20px 0; border-radius:10px; }
+</style>
+</head>
+
+<body>
+<header>
+    <nav>
+        <div class="logo">BRANDING STUDIO</div>
+        <div>
+            <a href="index.html">홈</a>
+            <a href="about.html">회사소개</a>
+            <a href="services.html">서비스</a>
+            <a href="contact.html">문의</a>
+        </div>
+    </nav>
+</header>
+
+<section>
+    <h1>회사 소개</h1>
+    <p>
+        퍼스널 브랜딩 스튜디오는 “나를 설명하는 첫인상”을 함께 설계하는 공간입니다.
+    </p>
+
+    <div class="card">
+        <h2>브랜딩 관점</h2>
+        <p>외모보다 중요한 건 내가 어떻게 기억되고 싶은가입니다...</p>
+    </div>
+
+    <div class="card">
+        <h2>실행 가능한 가이드</h2>
+        <p>촬영 후에도 일상에서 적용 가능한 가이드를 제공합니다...</p>
+    </div>
+
+    <div class="card">
+        <h2>맞춤형 1:1 세션</h2>
+        <p>직무, 목표, 관계에 따른 이미지 전략을 구축합니다...</p>
+    </div>
+</section>
+
+</body>
+</html>
