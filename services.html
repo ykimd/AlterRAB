@@ -60,40 +60,80 @@ nav a:hover { color:white; }
 }
 .submenu a:hover { text-decoration: underline; }
 
-/* ================= 공통 카드 ================= */
+/* ================= 공통 섹션 레이아웃 (서비스, 진행절차) ================= */
+.section-block {
+    width: 90%;
+    margin: 35px auto 50px;
+}
+
+.section-block h2 {
+    color: var(--burgundy);
+    margin-bottom: 6px;
+}
+
+.section-block p.section-desc {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* 3개 박스를 가로로 나열 (폭이 좁으면 자동 줄바꿈) */
+.box-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* 각 프로그램 / 절차 하나씩 */
+.box-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 위쪽 이미지 박스 (파란 사각형 자리) */
+.image-box {
+    width: 170px;
+    height: 170px;
+    background: #0044cc; /* 혹시 이미지 안 뜰 때 대비 */
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 아래 텍스트 박스 */
+.text-box {
+    width: 210px;
+    height: 120px;
+    border: 1px solid #999;
+    background: #ffffff;
+    margin-top: 12px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.text-box strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* ================= 성공 사례 카드(기존 스타일 유지) ================= */
 .card {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    margin: 25px auto;
+    margin: 25px auto 60px;
     width: 90%;
     box-shadow: 0 5px 12px rgba(0,0,0,0.08);
 }
 .card h2 {
     color: var(--burgundy);
 }
-.card img {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-top: 12px;
-}
-
-/* ================= 진행절차 ================= */
-.step {
-    margin: 20px 0;
-    padding: 15px;
-    background: #fff4f4;
-    border-radius: 10px;
-}
-
-.step h3 {
-    margin-top: 0;
-    color: var(--burgundy);
-}
-
-/* ================= 성공사례 ================= */
 .case {
     margin: 20px 0;
 }
@@ -103,8 +143,18 @@ nav a:hover { color:white; }
 }
 .case-img-box {
     margin-top: 10px;
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
 }
 
+/* ================= 반응형 ================= */
+@media (max-width: 768px) {
+    .text-box {
+        width: 90vw;
+        max-width: 260px;
+    }
+}
 </style>
 </head>
 
@@ -133,89 +183,130 @@ nav a:hover { color:white; }
     </div>
 </div>
 
-<!-- ================= 서비스 구성 ================= -->
-<div id="service" class="card">
+<!-- ================= 서비스 구성 (사진 + 텍스트 박스 3개) ================= -->
+<section id="service" class="section-block">
     <h2>서비스 구성</h2>
-    <p>퍼스널 브랜딩을 위한 대표 3가지 프로그램입니다.</p>
+    <p class="section-desc">퍼스널 브랜딩을 위한 대표 3가지 프로그램 입니다.</p>
 
-    <div class="step">
-        <h3>01 · 컬러 & 이미지 진단</h3>
-        <p>퍼스널 컬러를 중심으로, 얼굴형·분위기·직무를 고려한 이미지 방향성을 제안합니다.</p>
+    <div class="box-grid">
+        <!-- 01 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="서비스 이미지 1">
+            </div>
+            <div class="text-box">
+                <strong>01 컬러 & 이미지 작업</strong>
+                퍼스널 컬러를 중심으로, 얼굴형·분위기·직무를 고려한 이미지 방향성을 제안합니다.
+            </div>
+        </div>
 
-        <!-- 이미지 넣고 싶으면 변경 -->
-        <img src="img/service1.jpg" alt="이미지 진단">
+        <!-- 02 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="서비스 이미지 2">
+            </div>
+            <div class="text-box">
+                <strong>02 브랜딩 프로필 설계</strong>
+                프로필 촬영을 위한 전체 콘셉트를 설계하고, 의상·포즈·컷 리스트를 제안합니다.
+            </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="서비스 이미지 3">
+            </div>
+            <div class="text-box">
+                <strong>03 온라인 채널 브랜딩</strong>
+                이력서·링크드인·SNS 등 사용하는 채널에 맞는 이미지 전략과 문구를 구성합니다.
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="step">
-        <h3>02 · 브랜딩 프로필 설계</h3>
-        <p>프로필 촬영을 위한 전체 콘셉트를 설계하고, 의상·포즈·컷 리스트를 제안합니다.</p>
-
-        <img src="img/service2.jpg" alt="프로필 설계">
-    </div>
-
-    <div class="step">
-        <h3>03 · 온라인 채널 브랜딩</h3>
-        <p>이력서·링크드인·SNS 등 사용하는 채널에 맞는 이미지 전략과 문구를 구성합니다.</p>
-
-        <img src="img/service3.jpg" alt="채널 브랜딩">
-    </div>
-</div>
-
-<!-- ================= 진행 절차 ================= -->
-<div id="process" class="card">
+<!-- ================= 진행 절차 (같은 형식으로) ================= -->
+<section id="process" class="section-block">
     <h2>진행 절차</h2>
+    <p class="section-desc">문의부터 촬영 이후 온라인 적용까지의 전체 흐름입니다.</p>
 
-    <div class="step">
-        <h3>01. 문의 & 일정 조율</h3>
-        <p>카카오톡 또는 이메일 문의 후 기본 일정과 방향 조율</p>
-        <img src="img/process1.jpg">
+    <div class="box-grid">
+        <!-- 01 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 1">
+            </div>
+            <div class="text-box">
+                <strong>01. 문의 & 일정 조율</strong>
+                카카오톡 또는 이메일 문의 후<br>기본 일정과 방향 조율
+            </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 2">
+            </div>
+            <div class="text-box">
+                <strong>02. 사전 설문 & 브리핑</strong>
+                목표와 상황을 파악하고<br>세부 방향 설정
+            </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 3">
+            </div>
+            <div class="text-box">
+                <strong>03. 이미지 진단 세션</strong>
+                현장에서 어울리는 색·스타일<br>직접 테스트
+            </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 4">
+            </div>
+            <div class="text-box">
+                <strong>04. 촬영용 콘셉트 가이드</strong>
+                의상·포즈·컷 리스트 포함<br>브랜딩 촬영 가이드 제공
+            </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="box-item">
+            <div class="image-box">
+                <img src="https://i.postimg.cc/Q8tGZjS6/20250929-160531.jpg" alt="진행 절차 5">
+            </div>
+            <div class="text-box">
+                <strong>05. 온라인 적용 & 피드백</strong>
+                촬영 후 실제 채널 적용 및<br>1회 피드백 진행
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="step">
-        <h3>02. 사전 설문 & 브리핑</h3>
-        <p>목표와 상황을 파악하고 세부 방향 설정</p>
-        <img src="img/process2.jpg">
-    </div>
-
-    <div class="step">
-        <h3>03. 이미지 진단 세션</h3>
-        <p>현장에서 어울리는 색·스타일 직접 테스트</p>
-        <img src="img/process3.jpg">
-    </div>
-
-    <div class="step">
-        <h3>04. 촬영용 콘셉트 가이드</h3>
-        <p>의상·포즈·컷 리스트 포함 브랜딩 촬영 가이드 제공</p>
-        <img src="img/process4.jpg">
-    </div>
-
-    <div class="step">
-        <h3>05. 온라인 적용 & 피드백</h3>
-        <p>촬영 후 실제 채널 적용 및 1회 피드백 진행</p>
-        <img src="img/process5.jpg">
-    </div>
-</div>
-
-<!-- ================= 성공 사례 ================= -->
+<!-- ================= 성공 사례 (기존 형식 유지) ================= -->
 <div id="cases" class="card">
     <h2>성공 사례</h2>
 
     <div class="case">
         <h3>케이스 A · 마케팅 팀 리더</h3>
         <p>일관된 프로필 브랜딩으로 외부 강의 문의 증가</p>
-        <img class="case-img-box" src="img/case1.jpg">
+        <img class="case-img-box" src="img/case1.jpg" alt="성공 사례 1">
     </div>
 
     <div class="case">
         <h3>케이스 B · 프리랜서 디자이너</h3>
         <p>SNS 피드 재정비 후 문의 증가</p>
-        <img class="case-img-box" src="img/case2.jpg">
+        <img class="case-img-box" src="img/case2.jpg" alt="성공 사례 2">
     </div>
 
     <div class="case">
         <h3>케이스 C · 취업 준비생</h3>
         <p>채널별 맞춤 이미지 전략으로 서류 통과율 증가</p>
-        <img class="case-img-box" src="img/case3.jpg">
+        <img class="case-img-box" src="img/case3.jpg" alt="성공 사례 3">
     </div>
 </div>
 
