@@ -7,11 +7,13 @@
 
 <style>
 :root {
-    --bg: #FFF9F2;
-    --burgundy: #7B1B36;
-    --text: #333;
+    --bg: #FFF9F2;          /* 아이보리 배경 */
+    --burgundy: #7B1B36;    /* 포인트 컬러 */
+    --burgundy-light: #C7354E;
+    --text: #333333;        /* 일반 텍스트 */
 }
 
+/* ===== 기본 ===== */
 body {
     margin: 0;
     background: var(--bg);
@@ -19,16 +21,128 @@ body {
     color: var(--text);
 }
 
-/* 상단바 동일하게 */
+/* ===== 상단 네비게이션 ===== */
 header { background: var(--burgundy); padding: 15px 0; }
-nav { width: 90%; margin: auto; display: flex; justify-content: space-between; }
-nav a { color: #f3d7dd; text-decoration: none; margin-left: 20px; }
-.logo { color:white; font-weight:700; }
+nav {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo {
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+nav a {
+    color: #f3d7dd;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 15px;
+}
+nav a:hover { color: white; }
 
-/* 내용 영역 */
-section { width: 85%; margin: 40px auto; line-height: 1.7; }
-h1 { color: var(--burgundy); }
-.card { background:white; padding:20px; margin:20px 0; border-radius:10px; }
+/* ===== 페이지 타이틀 ===== */
+.page-header {
+    width: 90%;
+    margin: 40px auto 20px;
+}
+.page-header h1 {
+    color: var(--burgundy);
+    margin-bottom: 8px;
+}
+.page-header p {
+    margin: 0;
+    color: #555;
+}
+
+/* ===== 세 개의 원 영역 ===== */
+.circle-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 60px;
+}
+
+/* 2행 3열 그리드: 가운데 위, 아래 왼쪽/오른쪽 */
+.circle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    row-gap: 50px;
+    justify-items: center;
+}
+
+/* 위쪽 가운데 원 위치 조정 */
+.circle-grid .circle-wrapper.top {
+    grid-column: 2 / 3;  /* 가운데 컬럼 */
+}
+
+/* 아래쪽 두 개는 기본(왼/오른쪽) */
+
+.circle-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* 실제 원 스타일 */
+.circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #E64058, #C61B3A); /* 레드~버건디 계열 */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.circle:hover,
+.circle.active {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+}
+
+/* 텍스트 구성 */
+.circle-inner h3 {
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 6px;
+}
+
+.circle-inner p {
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* 처음에는 제목만 보이고 설명은 숨김 */
+.circle-inner p {
+    display: none;
+}
+
+/* 마우스 오버 or .active 클래스가 있을 때 설명 보이기 */
+.circle:hover .circle-inner p,
+.circle.active .circle-inner p {
+    display: block;
+}
+
+/* 모바일 대응(화면 좁을 때 세로 배치) */
+@media (max-width: 768px) {
+    .circle-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+    }
+    .circle-grid .circle-wrapper.top {
+        grid-column: 1 / 2;
+    }
+}
 </style>
 </head>
 
@@ -45,27 +159,53 @@ h1 { color: var(--burgundy); }
     </nav>
 </header>
 
-<section>
+<div class="page-header">
     <h1>회사 소개</h1>
-    <p>
-        알터랩 스튜디오는 “나를 설명하는 첫인상”을 함께 설계하는 공간입니다.
-    </p>
+    <p>우리 스튜디오가 지향하는 세 가지 키워드입니다.</p>
+</div>
 
-    <div class="card">
-        <h2>브랜딩 관점</h2>
-        <p>외모보다 중요한 건 내가 어떻게 기억되고 싶은가입니다.</p>
-    </div>
+<section class="circle-section">
+    <div class="circle-grid">
+        <!-- 위쪽 BRANDING -->
+        <div class="circle-wrapper top">
+            <div class="circle">
+                <div class="circle-inner">
+                    <h3>BRANDING</h3>
+                    <p>외모보다 중요한 건<br>내가 어떻게 기억되고 싶은가 입니다.</p>
+                </div>
+            </div>
+        </div>
 
-    <div class="card">
-        <h2>실행 가능한 가이드</h2>
-        <p>촬영 후에도 일상에서 적용 가능한 가이드를 제공합니다.</p>
-    </div>
+        <!-- 아래 왼쪽 GUIDE -->
+        <div class="circle-wrapper">
+            <div class="circle">
+                <div class="circle-inner">
+                    <h3>GUIDE</h3>
+                    <p>촬영 하루로 끝나지 않도록<br>일상에서 적용 가능한 가이드를 제안합니다.</p>
+                </div>
+            </div>
+        </div>
 
-    <div class="card">
-        <h2>맞춤형 1:1 세션</h2>
-        <p>직무, 목표, 관계에 따른 이미지 전략을 구축합니다.</p>
+        <!-- 아래 오른쪽 CUSTOMIZE -->
+        <div class="circle-wrapper">
+            <div class="circle">
+                <div class="circle-inner">
+                    <h3>CUSTOMIZE</h3>
+                    <p>직무·목표·성향에 맞춘<br>완전히 개인화된 브랜딩 방향을 설계합니다.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<script>
+/* 모바일에서도 설명이 나오도록: 클릭하면 active 토글 */
+document.querySelectorAll('.circle').forEach(function(circle) {
+    circle.addEventListener('click', function() {
+        this.classList.toggle('active');
+    });
+});
+</script>
 
 </body>
 </html>
