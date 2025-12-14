@@ -1,125 +1,644 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>알터랩 스튜디오</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRANDING STUDIO</title>
 
-<style>
-/* ====== 공통 색상 ====== */
-:root {
-    --bg: #FFF9F2;        /* 아이보리 */
-    --burgundy: #7B1B36;  /* 포인트 */
-    --burgundy-light: #A84A63;
-    --text: #333333;      /* 일반 텍스트 */
-}
+  <style>
+    :root{
+      --bg:#FFF9F2;
+      --burgundy:#7B1B36;
+      --burgundy-light:#A84A63;
+      --text:#333;
+      --card:#ffffff;
+      --border:#1f1f1f;
+      --shadow:0 10px 25px rgba(0,0,0,0.08);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family:Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      color:var(--text);
+    }
 
-/* ====== 기본 ====== */
-body {
-    margin: 0;
-    font-family: 'Pretendard', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-}
+    /* ===== 상단 메뉴 (기존 스타일 유지) ===== */
+    header{ background:var(--burgundy); padding:15px 0; }
+    nav{
+      width:90%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    nav .logo{ color:#fff; font-weight:800; letter-spacing:1px; }
+    nav a{
+      color:#f3d7dd;
+      margin-left:20px;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:600;
+    }
+    nav a:hover{ color:#fff; }
 
-/* ====== 상단 메뉴 ====== */
-header {
-    background: var(--burgundy);
-    padding: 15px 0;
-}
+    /* ===== 전체 레이아웃 프레임 ===== */
+    .wrap{
+      width:90%;
+      max-width:1100px;
+      margin:35px auto 70px;
+    }
+    .frame{
+      border:4px solid #000;
+      padding:22px;
+      background:rgba(255,255,255,0.25);
+    }
 
-nav {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    /* ===== 광고(회전목마) ===== */
+    .ad-box{
+      border:4px solid #000;
+      background:#fff;
+      height:260px;
+      position:relative;
+      overflow:hidden;
+    }
+    .carousel{
+      width:100%;
+      height:100%;
+      position:relative;
+    }
+    .slides{
+      display:flex;
+      width:100%;
+      height:100%;
+      transition:transform 600ms ease;
+    }
+    .slide{
+      min-width:100%;
+      height:100%;
+      position:relative;
+      background:#ddd;
+    }
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .ad-label{
+      position:absolute;
+      top:14px;
+      left:14px;
+      background:rgba(0,0,0,0.55);
+      color:#fff;
+      padding:6px 10px;
+      border-radius:10px;
+      font-size:13px;
+      letter-spacing:0.5px;
+    }
 
-nav .logo {
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
+    /* 좌우 버튼 */
+    .car-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px; height:44px;
+      border-radius:999px;
+      border:0;
+      background:rgba(255,255,255,0.8);
+      box-shadow:var(--shadow);
+      cursor:pointer;
+      font-size:22px;
+      line-height:44px;
+    }
+    .car-btn:hover{ background:#fff; }
+    .car-prev{ left:12px; }
+    .car-next{ right:12px; }
 
-nav a {
-    color: #f3d7dd;
-    margin-left: 20px;
-    text-decoration: none;
-    font-size: 15px;
-}
+    /* 점 표시 */
+    .dots{
+      position:absolute;
+      bottom:10px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:8px;
+      padding:8px 10px;
+      background:rgba(255,255,255,0.75);
+      border-radius:999px;
+    }
+    .dot{
+      width:9px; height:9px;
+      border-radius:50%;
+      background:#cfcfcf;
+      cursor:pointer;
+    }
+    .dot.active{ background:var(--burgundy-light); }
 
-nav a:hover {
-    color: white;
-}
+    /* ===== 아래 2칸 ===== */
+    .bottom{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 0.9fr 1.3fr;
+      gap:22px;
+    }
 
-/* ====== 메인 타이틀(사진 배경) ====== */
-.hero {
-    background: url("img/main-bg.jpg") center/cover no-repeat; /* 여기에 사진 넣기 */
-    padding: 120px 20px;
-    text-align: center;
-    color: #7B1B36;
-}
+    .panel{
+      border:4px solid #000;
+      background:#fff;
+      min-height:330px;
+      padding:14px 14px 16px;
+    }
+    .panel h3{
+      margin:0 0 12px;
+      color:var(--burgundy);
+      font-size:18px;
+    }
 
-.hero h1 {
-    font-size: 40px;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
+    /* 공지사항 리스트 */
+    .notice-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .notice-list li a{
+      display:block;
+      padding:10px 12px;
+      border:1px solid #ddd;
+      border-radius:10px;
+      text-decoration:none;
+      color:#222;
+      background:#fafafa;
+    }
+    .notice-list li a:hover{
+      border-color:var(--burgundy-light);
+      background:#fff;
+    }
+    .notice-meta{
+      font-size:12px;
+      color:#777;
+      margin-top:4px;
+    }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 25px;
-}
+    /* 문의 아이콘 그리드 */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+      margin-top:10px;
+    }
+    .contact-btn{
+      border:1px solid #ddd;
+      border-radius:14px;
+      padding:14px;
+      background:#fff;
+      cursor:pointer;
+      text-align:left;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .contact-btn:hover{
+      border-color:var(--burgundy-light);
+      transform:translateY(-1px);
+      transition: all 120ms ease;
+    }
+    .ico{
+      width:44px; height:44px;
+      border-radius:12px;
+      background:#f6e7ea;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      color:var(--burgundy);
+      flex:0 0 auto;
+    }
+    .contact-title{ font-weight:800; color:#222; }
+    .contact-sub{ font-size:12px; color:#666; margin-top:4px; }
 
-/* ====== 메뉴 버튼 ====== */
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
+    /* ===== 문의 폼(모달) ===== */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:9999;
+    }
+    .modal{
+      width:min(720px, 100%);
+      background:#fff;
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      background:var(--burgundy);
+      color:#fff;
+      padding:14px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .modal-head strong{ letter-spacing:0.3px; }
+    .xbtn{
+      border:0;
+      background:rgba(255,255,255,0.2);
+      color:#fff;
+      width:38px;height:38px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:18px;
+    }
+    .modal-body{
+      padding:16px;
+    }
+    .form-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .field label{
+      display:block;
+      font-size:12px;
+      color:#666;
+      margin-bottom:6px;
+    }
+    .field input, .field textarea, .field select{
+      width:100%;
+      padding:10px 12px;
+      border:1px solid #ddd;
+      border-radius:12px;
+      outline:none;
+      font-size:14px;
+    }
+    .field textarea{ min-height:120px; resize:vertical; }
+    .actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-top:10px;
+    }
+    .btn{
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid #ddd;
+      background:#fff;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btn.primary{
+      background:var(--burgundy);
+      border-color:var(--burgundy);
+      color:#fff;
+    }
 
-.btn {
-    padding: 12px 22px;
-    background: var(--burgundy);
-    border-radius: 8px;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-.btn:hover {
-    background: var(--burgundy-light);
-}
-
-</style>
+    /* 반응형 */
+    @media (max-width: 900px){
+      .bottom{ grid-template-columns: 1fr; }
+      .form-row{ grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <nav>
-        <div class="logo">ALTERLAB STUDIO</div>
-        <div>
-            <a href="index.html">홈</a>
-            <a href="about.html">회사소개</a>
-            <a href="services.html">서비스</a>
-            <a href="contact.html">문의</a>
-        </div>
-    </nav>
+  <nav>
+    <div class="logo">BRANDING STUDIO</div>
+    <div>
+      <a href="index.html">홈</a>
+      <a href="about.html">회사소개</a>
+      <a href="services.html">서비스</a>
+      <a href="contact.html">문의</a>
+    </div>
+  </nav>
 </header>
 
-<section class="hero">
-    <h1>환영합니다,<br>퍼스널 브랜딩을 위한 알터랩 스튜디오입니다.</h1>
-    <p>이미지 전략 · 색채 진단 · 프로필 브랜딩 전문</p>
+<div class="wrap">
+  <div class="frame">
 
-    <div class="buttons">
-        <a class="btn" href="about.html">회사소개</a>
-        <a class="btn" href="services.html">서비스</a>
-        <a class="btn" href="contact.html">문의하기</a>
+    <!-- 광고(회전목마) -->
+    <div class="ad-box">
+      <div class="carousel" id="carousel">
+        <div class="ad-label">광고</div>
+
+        <div class="slides" id="slides">
+          <!-- ✅ 여기 이미지 3장만 바꾸면 됨 -->
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1520975958225-3f51c2f2e5f5?auto=format&fit=crop&w=1400&q=70" alt="ad1">
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1520975640211-6a150dcd0f91?auto=format&fit=crop&w=1400&q=70" alt="ad2">
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1520975708798-3f25c78fdc54?auto=format&fit=crop&w=1400&q=70" alt="ad3">
+          </div>
+        </div>
+
+        <button class="car-btn car-prev" id="prevBtn" aria-label="prev">‹</button>
+        <button class="car-btn car-next" id="nextBtn" aria-label="next">›</button>
+
+        <div class="dots" id="dots"></div>
+      </div>
     </div>
-</section>
+
+    <!-- 아래 영역 -->
+    <div class="bottom">
+
+      <!-- 공지사항 -->
+      <section class="panel">
+        <h3>공지사항</h3>
+        <ul class="notice-list" id="noticeList">
+          <!-- JS로 채워짐 -->
+        </ul>
+        <div class="notice-meta" id="noticeMeta"></div>
+      </section>
+
+      <!-- 문의하기 -->
+      <section class="panel">
+        <h3>문의하기</h3>
+
+        <div class="contact-grid">
+          <button class="contact-btn" data-channel="kakao">
+            <div class="ico">💬</div>
+            <div>
+              <div class="contact-title">카카오톡</div>
+              <div class="contact-sub">클릭하면 문의 폼 열기</div>
+            </div>
+          </button>
+
+          <button class="contact-btn" data-channel="email">
+            <div class="ico">✉️</div>
+            <div>
+              <div class="contact-title">이메일</div>
+              <div class="contact-sub">클릭하면 문의 폼 열기</div>
+            </div>
+          </button>
+
+          <button class="contact-btn" data-channel="phone">
+            <div class="ico">📞</div>
+            <div>
+              <div class="contact-title">전화</div>
+              <div class="contact-sub">클릭하면 문의 폼 열기</div>
+            </div>
+          </button>
+
+          <button class="contact-btn" data-channel="insta">
+            <div class="ico">📷</div>
+            <div>
+              <div class="contact-title">인스타그램</div>
+              <div class="contact-sub">클릭하면 문의 폼 열기</div>
+            </div>
+          </button>
+        </div>
+
+        <div class="notice-meta" style="margin-top:14px;">
+          * 실제 전송은 “메일/카톡/서버 API” 중 하나로 연결해야 해요. 지금은 폼 UI까지 완성본입니다.
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- 문의 모달 -->
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <strong id="modalTitle">문의하기</strong>
+      <button class="xbtn" id="modalClose" aria-label="close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <label>문의 채널</label>
+            <select id="channel">
+              <option value="kakao">카카오톡</option>
+              <option value="email">이메일</option>
+              <option value="phone">전화</option>
+              <option value="insta">인스타그램</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>이름</label>
+            <input id="name" type="text" placeholder="이름을 입력하세요" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label>연락처(전화/메일 등)</label>
+            <input id="contact" type="text" placeholder="연락 가능한 정보를 입력하세요" required>
+          </div>
+          <div class="field">
+            <label>희망 일정(선택)</label>
+            <input id="date" type="text" placeholder="예) 1월 둘째 주 / 12/12 오후 등">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>문의 내용</label>
+          <textarea id="message" placeholder="원하시는 서비스, 목적, 참고 링크 등을 적어주세요." required></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn" id="cancelBtn">취소</button>
+          <button type="submit" class="btn primary">문의 내용 만들기</button>
+        </div>
+
+        <div class="notice-meta" style="margin-top:10px;">
+          제출 버튼을 누르면 “전송” 대신, 채널에 맞춘 메시지/링크로 연결해주는 방식으로 동작합니다.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================
+   1) 광고 회전목마
+========================== */
+(function(){
+  const slidesEl = document.getElementById('slides');
+  const slideCount = slidesEl.children.length;
+  const dotsEl = document.getElementById('dots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let index = 0;
+  let timer = null;
+  const intervalMs = 3500;
+
+  function renderDots(){
+    dotsEl.innerHTML = '';
+    for(let i=0;i<slideCount;i++){
+      const d = document.createElement('div');
+      d.className = 'dot' + (i===index ? ' active' : '');
+      d.addEventListener('click', () => go(i));
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function go(i){
+    index = (i + slideCount) % slideCount;
+    slidesEl.style.transform = 'translateX(' + (-index*100) + '%)';
+    renderDots();
+  }
+
+  function next(){ go(index+1); }
+  function prev(){ go(index-1); }
+
+  function start(){
+    stop();
+    timer = setInterval(next, intervalMs);
+  }
+  function stop(){
+    if(timer) clearInterval(timer);
+    timer = null;
+  }
+
+  nextBtn.addEventListener('click', ()=>{ next(); start(); });
+  prevBtn.addEventListener('click', ()=>{ prev(); start(); });
+
+  // 마우스 올리면 멈춤(원하면 삭제 가능)
+  document.getElementById('carousel').addEventListener('mouseenter', stop);
+  document.getElementById('carousel').addEventListener('mouseleave', start);
+
+  go(0);
+  start();
+})();
+
+/* ==========================
+   2) 공지사항 (DB 대신 샘플)
+   - 나중에 API/JSON으로 교체 가능
+========================== */
+(function(){
+  const listEl = document.getElementById('noticeList');
+  const metaEl = document.getElementById('noticeMeta');
+
+  // ✅ 서버 없이도 보이게 샘플 데이터
+  const notices = [
+    { title: "1월 촬영 예약 오픈 안내", date: "2025-01-03", link: "#" },
+    { title: "퍼스널 브랜딩 패키지 구성 변경", date: "2024-12-22", link: "#" },
+    { title: "연말 이벤트: 프로필 촬영 할인", date: "2024-12-10", link: "#" },
+  ];
+
+  // ✅ DB/API로 바꾸려면 여기만 교체하면 됨:
+  // fetch('https://YOUR-API/notices')
+  //   .then(r => r.json())
+  //   .then(data => render(data));
+
+  function render(data){
+    listEl.innerHTML = '';
+    data.slice(0, 3).forEach(n => {
+      const li = document.createElement('li');
+      li.innerHTML = '<a href="'+(n.link||'#')+'">' +
+        n.title +
+        '<div class="notice-meta">'+(n.date||'')+'</div>' +
+      '</a>';
+      listEl.appendChild(li);
+    });
+    metaEl.textContent = "※ 공지사항은 상위 3개 제목만 노출됩니다.";
+  }
+
+  render(notices);
+})();
+
+/* ==========================
+   3) 문의 아이콘 클릭 → 모달 열기
+   (채널에 맞게 폼 기본값 설정)
+========================== */
+(function(){
+  const modal = document.getElementById('modalBackdrop');
+  const closeBtn = document.getElementById('modalClose');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const channelEl = document.getElementById('channel');
+  const titleEl = document.getElementById('modalTitle');
+  const form = document.getElementById('contactForm');
+
+  function openModal(channel){
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    channelEl.value = channel;
+
+    const map = {
+      kakao: "카카오톡 문의",
+      email: "이메일 문의",
+      phone: "전화 문의",
+      insta: "인스타그램 문의"
+    };
+    titleEl.textContent = map[channel] || "문의하기";
+  }
+
+  function closeModal(){
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll('.contact-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      openModal(btn.getAttribute('data-channel'));
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=>{
+    if(e.target === modal) closeModal();
+  });
+
+  // "전송" 대신: 채널별로 연결되는 방식 예시(메일/전화 등)
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+
+    const channel = channelEl.value;
+    const name = document.getElementById('name').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const date = document.getElementById('date').value.trim();
+    const msg = document.getElementById('message').value.trim();
+
+    const text =
+      "[브랜딩 스튜디오 문의]\n" +
+      "채널: " + channel + "\n" +
+      "이름: " + name + "\n" +
+      "연락처: " + contact + "\n" +
+      (date ? "희망 일정: " + date + "\n" : "") +
+      "내용: " + msg;
+
+    // ✅ 실제 연결(유리님 정보로 바꿔야 함)
+    if(channel === 'email'){
+      // 본인 이메일로 바꿔주세요
+      const to = "YOUR_EMAIL@example.com";
+      location.href = "mailto:" + encodeURIComponent(to) +
+        "?subject=" + encodeURIComponent("브랜딩 스튜디오 문의") +
+        "&body=" + encodeURIComponent(text);
+
+    } else if(channel === 'phone'){
+      // 본인 번호로 바꿔주세요 (전화 연결)
+      location.href = "tel:01000000000";
+
+    } else if(channel === 'insta'){
+      // 인스타 링크로 이동 (DM 안내 문구는 페이지에서 보여주면 좋음)
+      window.open("https://instagram.com/YOUR_INSTAGRAM", "_blank");
+
+    } else if(channel === 'kakao'){
+      // 카카오 채널/오픈채팅 링크로 이동
+      window.open("https://open.kakao.com/o/YOURCHAT", "_blank");
+    }
+
+    closeModal();
+  });
+})();
+</script>
 
 </body>
 </html>
